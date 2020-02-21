@@ -34,6 +34,6 @@ def pymongo_retrieve():
 
 
 if __name__ == '__main__':
-    pymongo_insert()
+    # pymongo_insert()
     pymongo_retrieve()
     print("MongoTest")
