@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "E:\\DevProjects\\DevEnv\\GenVenv\\Scripts\\python.exe"
+    "python.pythonPath": "/home/sunil/python_projs/venv/bin/python",
+    "python.venvPath": "/home/sunil/python_projs"
 }
