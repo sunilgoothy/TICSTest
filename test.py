@@ -9,5 +9,7 @@ def loop():
     print("Execution Time:", (end_time - start_time), "seconds")
 
 if __name__ == '__main__':
-    loop()
     print('Running Test Script')
+    loop()
+    print('End Test Script')
+    # print(input('Please Input something'))

@@ -1,15 +1,25 @@
+import os, sys
 from flask import Flask, render_template
 
-app = Flask(__name__)
+#Below if block for packaging using pyinstaller
+if getattr(sys, 'frozen', False):
+    template_folder = os.path.join(sys._MEIPASS, 'templates')
+    static_folder = os.path.join(sys._MEIPASS, 'static')
+    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+else:
+    app = Flask(__name__)
+
+
+#app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-   return render_template('index.html', name = 'ISHA')
+   return render_template('index.html', name = 'SUNIL')
 
 @app.route('/p5')
 def p5():
-   return render_template('p5.html', name = 'ISHA')
+   return render_template('p5.html', name = 'SUNIL')
 
 @app.route('/vue')
 def vue():
@@ -18,6 +28,11 @@ def vue():
 @app.template_filter()
 def vue_filter(item):
     return '{{ ' + item + ' }}'
+
+@app.route('/svg')
+def svg():
+   return render_template('svg.html')
+
 
 if __name__ == '__main__':
    app.run(debug = True)
