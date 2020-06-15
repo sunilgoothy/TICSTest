@@ -1,16 +1,16 @@
 import os, sys
 from flask import Flask, render_template
 
-#Below if block for packaging using pyinstaller
-if getattr(sys, 'frozen', False):
-    template_folder = os.path.join(sys._MEIPASS, 'templates')
-    static_folder = os.path.join(sys._MEIPASS, 'static')
-    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
-else:
-    app = Flask(__name__)
+#Below if block required for packaging all files into single file using pyinstaller
+# if getattr(sys, 'frozen', False):
+#     template_folder = os.path.join(sys._MEIPASS, 'templates')
+#     static_folder = os.path.join(sys._MEIPASS, 'static')
+#     app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+# else:
+#     app = Flask(__name__)
 
 
-#app = Flask(__name__)
+app = Flask(__name__)
 
 
 @app.route('/')

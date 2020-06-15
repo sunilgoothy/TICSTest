@@ -1,4 +1,7 @@
 import time
+from TICSUtil import *
+
+
 MILLION = 1000000
 def loop():
     start_time = time.perf_counter()
@@ -11,5 +14,9 @@ def loop():
 if __name__ == '__main__':
     print('Running Test Script')
     loop()
+
+    config_value = readconfigfile('config.ini', 'test_section', 'url')
+    print(f'Config value in file is {config_value}')
+
     print('End Test Script')
     # print(input('Please Input something'))
