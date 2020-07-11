@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style type="text/css">
+        body {
+            color: #333;
+            font-size: 14pt;
+        }
+
+        h1 {
+            font-size: 24pt;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>My first pywebview application</h1>
+
+<button onclick="openFolder()">Open folder</button>
+<button onclick="toggleFullscreen()">Toggle fullscreen</button>
+<button onclick="doStuff()">Do stuff</button>
+<button onclick="myStuff()">My Stuff</button>
+<div id="open-folder-container"></div>
+<div id="stuff-container"></div>
+<div id="my-stuff-container"></div>
+<div id="json-container"></div>
+
+<script src="gui/js/pywebview.js"></script>
+<script>
+
+    function openFolderHandler() {
+        if (this.responseText) {
+            var response = JSON.parse(this.responseText);
+            document.getElementById("open-folder-container").innerHTML = 'Selected directory: ' + response.directory;
+        }
+    }
+
+    function doStuffHandler(response) {
+        if (this.responseText) {
+            var response = JSON.parse(this.responseText);
+            document.getElementById("stuff-container").innerHTML = response.result;
+        }
+
+    }
+
+    function openFolder() {
+        doAjax("/choose/path", "POST", openFolderHandler);
+    }
+
+    function doStuff() {
+        doAjax("/do/stuff", "POST", doStuffHandler);
+    }
+
+    function toggleFullscreen() {
+        doAjax("/fullscreen", "POST", doStuffHandler);
+    }
+
+    function myStuff() {
+        doAjax("/mystuff", "POST", doStuffHandler);
+    }
+
+    function openLink(e) {
+        e.preventDefault()
+        var request = {url: e.currentTarget.href}
+        doAjax("/open-url", "POST", false, request)
+    }
+
+    // From https://gist.github.com/dharmavir/936328
+    function getHttpRequestObject()
+    {
+        // Define and initialize as false
+        var xmlHttpRequst = false;
+
+        // Mozilla/Safari/Non-IE
+        if (window.XMLHttpRequest)
+        {
+            xmlHttpRequst = new XMLHttpRequest();
+        }
+        // IE
+        else if (window.ActiveXObject)
+        {
+            xmlHttpRequst = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlHttpRequst;
+    }
+
+
+</script>
+</body>
+</html>

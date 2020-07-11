@@ -1,0 +1,87 @@
+.tics-data{ 
+  width:100px;
+  text-align:center;    
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  padding: 10px 20px;
+  background-color: #ffcb69;
+  /* background: -moz-linear-gradient(
+    top,
+    #ffcb69 0%,
+    #f0a733 50%,
+    #f2a324 92%,
+    #ffb730);
+  background: -webkit-gradient(
+    linear, left top, left bottom,
+    from(#ffcb69),
+    color-stop(0.50, #f0a733),
+    color-stop(0.92, #f2a324),
+    to(#ffb730)); */
+  box-shadow:
+    0px 0px 0px rgba(000,000,000,0.5),
+    inset 1px 2px 0px rgba(255,255,255,0.4);
+  border-right: 5px solid #ebedef;
+  white-space: nowrap;
+}
+
+.tics-data-status{ 
+  width:100px;
+  text-align:center;    
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  padding: 10px 20px;
+  background-color: #ffcb69;
+  box-shadow:
+    0px 0px 0px rgba(000,000,000,0.5),
+    inset 1px 2px 0px rgba(255,255,255,0.4);
+  border-right: 5px solid #ebedef;
+  white-space: nowrap;
+}
+
+.tics-data-nogap{ 
+  width:100px;
+  text-align:center;    
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  padding: 10px 20px;
+  background-color: #ffcb69;
+  /* background: -moz-linear-gradient(
+    top,
+    #ffcb69 0%,
+    #f0a733 50%,
+    #f2a324 92%,
+    #ffb730);
+  background: -webkit-gradient(
+    linear, left top, left bottom,
+    from(#ffcb69),
+    color-stop(0.50, #f0a733),
+    color-stop(0.92, #f2a324),
+    to(#ffb730)); */
+  box-shadow:
+    0px 0px 0px rgba(000,000,000,0.5),
+    inset 1px 2px 0px rgba(255,255,255,0.4);
+  white-space: nowrap;
+}
+
+.tics-label{ 
+  text-align:right;    
+  color: white;
+  padding: 10px 20px;
+  background-color:#768192bb; 
+  box-shadow:
+    0px 0px 0px rgba(000,000,000,0.5),
+    inset 1px 2px 0px rgba(255,255,255,0.4);
+  white-space: nowrap;
+} 
+
+.tics-data-empty{ 
+  text-align:right;    
+  color: white;
+  padding: 10px 20px;
+  background-color: #ffcb6980; 
+  box-shadow:
+    0px 0px 0px rgba(000,000,000,0.5),
+    inset 1px 2px 0px rgba(255,255,255,0.4);
+  /* border-right: 10px solid whitesmoke; */
+  white-space: nowrap;
+} 

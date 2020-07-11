@@ -19,4 +19,5 @@ if __name__ == '__main__':
     print(f'Config value in file is {config_value}')
 
     print('End Test Script')
+    input('Any to exit')
     # print(input('Please Input something'))

@@ -1,7 +1,10 @@
 <!doctype html>
 <html>
     <head>
+      <title>Test Flask Server</title>
 
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon.ico">
+      <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
     </head>
 
     <body>
@@ -9,5 +12,27 @@
       <p><a href = '/p5'>P5 Example</a></p>
       <p><a href = '/vue'>Vue Example</a></p>
       <p><a href = '/svg'>SVG Example</a></p>
+      <p><a href = 'file://D:\DevProjects\TICSTest\dist\testfile.txt'>Open Local File</a></p>
+      <p><a href = '/cpl'>TICS Control Panel (Bootstrap GUI)</a></p>
+
+      <div id="wsmsg" class="bg-success text-white h4">Waiting for WS response....</div>
+
+      <script src="/static/assets/js/jquery-3.5.1.min.js"></script>
+      <script src="/static/assets/js/bootstrap.bundle.js"></script>
+
+      <script src="/static/assets/js/socket.io.min.js"></script>
+      <script type="text/javascript">
+        let socket = io('/index');               //Conenct to SocketIO
+
+        socket.on( 'connect', function() {
+          socket.emit( 'testws', { data: 'Test Message after socket IO connect' } );
+        } );
+  
+        socket.on( 'test_response', function( msg ) {
+            document.getElementById("wsmsg").innerText = msg;
+            console.log( msg );
+        });
+  
+      </script>
    </body>
 </html>
