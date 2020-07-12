@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'you-will-never-guess'
 app.debug = True
 async_mode = None   
 
-socketio = SocketIO(app, async_mode=async_mode)
+socketio = SocketIO(app, async_mode=async_mode, cors_allowed_origins="*")
 
 @app.route('/')
 def index():
@@ -41,9 +41,9 @@ def cpl():
    return render_template('CPL.html')
 
 
-@socketio.on('connect')
-def rootconnect(methods=['GET', 'POST']):
-    print('<INFO> Received CONNECT event from ROOT')
+# @socketio.on('connect')
+# def rootconnect(methods=['GET', 'POST']):
+#     print('<INFO> Received CONNECT event from ROOT')
 
 @socketio.on('connect', namespace='/index')
 def connect(methods=['GET', 'POST']):
@@ -57,9 +57,9 @@ def disconnect(methods=['GET', 'POST']):
 def testws(jsonmsg, methods=['GET', 'POST']):
     print('<INFO> received test WebSocket Message ==> ' + jsonmsg['data'])
     msg = 'This is SUCCESS response message from WebSocket'
-    while True:
-        socketio.emit('test_response', msg, namespace='/index')
-        socketio.sleep(2)
+    # while True:
+    socketio.emit('test_response', msg, namespace='/index')
+        # socketio.sleep(2)
 
 
 if __name__ == '__main__':
