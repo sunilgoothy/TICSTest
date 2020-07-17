@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="ToDo App">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon.ico">
+    
+    <title>
+        ToDo App
+    </title>
+
+    <style>
+      body{
+        margin:0em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .main-header{
+        display: flex;
+        justify-content: center;
+        background-color:aquamarine;
+      }
+
+      .task_open{
+        background-color: burlywood;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-header">
+      <h1>ToDo Application</h1>
+    </div>
+
+    <div>
+      <input type="button" value="Add New task" onClick="addTask()"></input>
+    </div>
+
+    <div>
+      <ul id="taskList">
+        <li id="task0" class="task_open">No Tasks</li>
+      </ul>
+    </div>
+
+
+    <script src="static/js/socket.io.min.js"></script>
+    <script type="text/javascript">
+
+      let socket = io('/tasks');               //Conenct to SocketIOroom
+
+      socket.on( 'connect', function() {
+        socket.emit( 'get_tasks', { data: 'Socket IO Connected from Task App' } );
+      } );
+
+      socket.on( 'test_response', function( msg ) {
+        console.log( msg );
+      });
+
+      socket.on( 'task_list', function( msg ) {
+        jsonobj = JSON.parse(msg);
+        taskHTML = '';
+        for(i in jsonobj){
+          console.log(jsonobj[i])
+          taskHTML = taskHTML + "<li id='task" + i + "' class='task_open'>" + jsonobj[i] + "</li>";
+        };
+        console.log(taskHTML);
+        document.getElementById('taskList').innerHTML = taskHTML;
+      });
+
+
+      function addTask(){
+        console.log("hello from function");
+        socket.emit( 'add_task', { data: 'New task' } );
+      };
+
+    </script>
+  </body>
+</html>

@@ -65,7 +65,7 @@ def initialize():
 
 
 @server.route('/choose/path', methods=['POST'])
-@verify_token
+# @verify_token
 def choose_path():
     '''
     Invoke a folder selection dialog here
@@ -85,7 +85,7 @@ def choose_path():
 
 
 @server.route('/fullscreen', methods=['POST'])
-@verify_token
+# @verify_token
 def fullscreen():
     print("Inside FullScreen")
     webview.windows[0].toggle_fullscreen()
@@ -93,7 +93,7 @@ def fullscreen():
 
 
 @server.route('/open-url', methods=['POST'])
-@verify_token
+# @verify_token
 def open_url():
     url = request.json['url']
     webbrowser.open_new_tab(url)
@@ -102,7 +102,7 @@ def open_url():
 
 
 @server.route('/do/stuff', methods=['POST'])
-@verify_token
+# @verify_token
 def do_stuff():
     result = app.do_stuff()
 
@@ -114,7 +114,7 @@ def do_stuff():
     return jsonify(response)
 
 @server.route('/mystuff', methods=['POST'])
-@verify_token
+# @verify_token
 def my_stuff():
     result = app.my_stuff()
 
