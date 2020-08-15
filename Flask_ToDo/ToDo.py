@@ -6,8 +6,9 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 app.debug = True
-async_mode = None               #For Eventlet WebSockets
-# async_mode = 'threading'        #For Multithreading
+# async_mode = None               #For Eventlet WebSockets
+async_mode = 'threading'        #For Multithreading
+
 
 task_list = ['First Task', 'Second Task', 'Third Task']
 

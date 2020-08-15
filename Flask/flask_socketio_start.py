@@ -61,6 +61,9 @@ def testws(jsonmsg, methods=['GET', 'POST']):
     socketio.emit('test_response', msg, namespace='/index')
         # socketio.sleep(2)
 
+@socketio.on('ltp_tick', namespace='/index')
+def ltp_tick(jsonmsg, methods=['GET', 'POST']):
+    print('LTP: ', json.dumps(jsonmsg, indent=4))
 
 if __name__ == '__main__':
     print(f'<INFO> Debug Web server will run at http://127.0.0.1:5000')
