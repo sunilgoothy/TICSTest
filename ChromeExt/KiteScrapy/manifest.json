@@ -1,7 +1,14 @@
 {
     "manifest_version": 2,
     "name": "KiteScrapy",
-    "version": "0.1",
+    "version": "0.5",
+
+    "browser_action": {
+        "default_icon": "scrapper.png",
+        "default_popup": "popup.html",
+ 		"default_title": "Kite Scrapper"
+      },
+
     "content_scripts": [
         {
             "matches":[
