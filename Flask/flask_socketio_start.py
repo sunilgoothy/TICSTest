@@ -66,5 +66,6 @@ def ltp_tick(jsonmsg, methods=['GET', 'POST']):
     print('LTP: ', json.dumps(jsonmsg, indent=4))
 
 if __name__ == '__main__':
-    print(f'<INFO> Debug Web server will run at http://127.0.0.1:5000')
-    socketio.run(app, debug=True, use_reloader=True)
+    port = 5001
+    print(f'<INFO> Debug Web server will run at http://127.0.0.1:{port}')
+    socketio.run(app, port=port, debug=True, use_reloader=True)

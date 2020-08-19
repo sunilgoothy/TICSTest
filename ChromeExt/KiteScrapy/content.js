@@ -1,5 +1,5 @@
 // console.log('content.js started....');
-let socket = io.connect('http://127.0.0.1:5000/index');               //Conenct to SocketIO
+let socket = io.connect('http://127.0.0.1:5001/index');               //Conenct to SocketIO
 let count = 0;
 let getLTP_loop_started = false;
 let get_interval = 1000; //loop interval in ms for reading ltp
