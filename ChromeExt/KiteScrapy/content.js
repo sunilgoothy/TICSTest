@@ -6,13 +6,26 @@ let get_interval = 1000; //loop interval in ms for reading ltp
 
 socket.on( 'connect', function() {
   site = document.domain;
-  socket.emit( 'testws', { data: 'CHROME EXTENSION: Test Message from ' + site + ' after socket IO connect' } );
+  // socket.emit( 'testws', { data: 'CHROME EXTENSION: Test Message from ' + site + ' after socket IO connect' } );
+  socket.emit( 'start_nifty_strategy', { data: 'CHROME EXTENSION: Start Strategy request from Chrome...' } );
   // socket.emit( 'testws', { data: 'CHROME EXTENSION: Test Message from after socket IO connect' } );
 } );
 
 socket.on( 'test_response', function( msg ) {
   console.log( 'CHROME EXTENSION:' + msg );
 });
+
+socket.on( 'get_LTP', function( msg ) {
+  console.log( 'CHROME EXTENSION:' + msg );
+});
+
+
+function loop_getLTP(){
+  if(getLTP_loop_started){
+    getLTP();
+    setTimeout(() => {  loop_getLTP(); }, get_interval);
+  }
+};
 
 function getLTP(){
   let ltp_data = {};
@@ -30,9 +43,6 @@ function getLTP(){
   } catch (error) {
     console.log(error);
   }
-  if(getLTP_loop_started){
-    setTimeout(() => {  getLTP(); }, get_interval);
-  }
 };
 
 
@@ -41,7 +51,8 @@ chrome.runtime.onMessage.addListener(
     if( request.message === "startKite" ) {
       console.log("Start Event received from popup");
       if(!getLTP_loop_started){
-        setTimeout(() => {  getLTP(); }, 1000);
+        setTimeout(() => {  loop_getLTP(); }, 1000);
+        // start_loop_getLTP();
         getLTP_loop_started = true;
         chrome.runtime.sendMessage({"message": "kite_started"});
       }else{

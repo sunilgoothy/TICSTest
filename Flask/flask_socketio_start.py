@@ -1,6 +1,10 @@
-import os, sys, json
+import os, sys, json, time
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+import pandas as pd
+import numpy as np
+
+df_nf5 = pd.DataFrame()
 
 # Below if block required for packaging all files into single file using pyinstaller
 if getattr(sys, 'frozen', False):
@@ -44,13 +48,26 @@ def cpl():
 # @socketio.on('connect')
 # def rootconnect(methods=['GET', 'POST']):
 #     print('<INFO> Received CONNECT event from ROOT')
+nifty_intraday_run = False
+def Nifty_Intraday():
+    global nifty_intraday_run
+    loop_count = 0
+    while(nifty_intraday_run):
+        loop_count = loop_count + 1
+        print(f"Loop in progress... {loop_count}")
+        socketio.sleep(3)
 
 @socketio.on('connect', namespace='/index')
 def connect(methods=['GET', 'POST']):
     print('<INFO> Received CONNECT event from INDEX')
+    print(f"Starting Strategy Loop...")
+    global nifty_intraday_run
+    nifty_intraday_run = True
 
 @socketio.on('disconnect', namespace='/index')
 def disconnect(methods=['GET', 'POST']):
+    global nifty_intraday_run
+    nifty_intraday_run = False
     print('<INFO> Received DISCONNECT event from INDEX')
 
 @socketio.on('testws', namespace='/index')
@@ -61,9 +78,22 @@ def testws(jsonmsg, methods=['GET', 'POST']):
     socketio.emit('test_response', msg, namespace='/index')
         # socketio.sleep(2)
 
+@socketio.on('start_nifty_strategy', namespace='/index')
+def start_nifty_strategy(jsonmsg, methods=['GET', 'POST']):
+    print(jsonmsg['data'])
+    Nifty_Intraday()
+
+
 @socketio.on('ltp_tick', namespace='/index')
 def ltp_tick(jsonmsg, methods=['GET', 'POST']):
-    print('LTP: ', json.dumps(jsonmsg, indent=4))
+    ltp = jsonmsg
+    global df_nf5
+    df_nf5 = pd.DataFrame(ltp.items())
+    print(type(ltp))
+    print(df_nf5)
+
+
+
 
 if __name__ == '__main__':
     port = 5001
