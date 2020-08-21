@@ -28,13 +28,14 @@ def csvToDic2(filename):
 
 
 
-# df_nf5 = pd.read_csv('data/Nifty-Futures-Aug.csv', sep='\t', encoding='utf_16_le')
-# df_nf5 = df_nf5[df_nf5.columns[:-1]]
+
 data_nf5 = dict()
 def load_csv():
     data_nf5 = csvToDic2('data/Nifty-Futures-Aug.csv')
     # print(data_nf5['20-08-2020 14:00:00'])
-
+    df_nf5 = pd.read_csv('data/Nifty-Futures-Aug.csv', sep='\t', encoding='utf_16_le')
+    df_nf5 = df_nf5[df_nf5.columns[:-1]]
+    
 def Nifty_Intraday():
     df_nf5['MA6'] = df_nf5['Close'].rolling(6).mean()
     df_nf5['MA21'] = df_nf5['Close'].rolling(21).mean()
@@ -49,7 +50,7 @@ def SMA(data as dict):
 
 
 if __name__ == '__main__':
-    data_nf5 = csvToDic2('data/Nifty-Futures-Aug.csv')
-    SMA(data_nf5)
-    # Nifty_Intraday()
+    # data_nf5 = csvToDic2('data/Nifty-Futures-Aug.csv')
+    # SMA(data_nf5)
+    Nifty_Intraday()
     
