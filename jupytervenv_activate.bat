@@ -1,0 +1,1 @@
+E:/DevProjects/DevEnv/jupyter_venv/Scripts/Activate.bat

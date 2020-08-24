@@ -1,0 +1,1 @@
+E:/DevProjects/DevEnv/FlaskVenv/Scripts/Activate.bat
