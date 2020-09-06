@@ -27,6 +27,8 @@ def disconnect(methods=['GET', 'POST']):
 @socketio.on('ltp_tick', namespace='/index')
 def ltp_tick(jsonmsg, methods=['GET', 'POST']):
     current_time = dt.datetime.now()
+    seconds = current_time.strftime(" %S")
+    print(seconds, end='', flush=True)
     if current_time.minute % 1 == 0 and current_time.second % 60 == 0:
         current_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
         print(current_time)
