@@ -1,5 +1,11 @@
 // console.log('content.js started....');
-let socket = io.connect('http://127.0.0.1:5001/index');               //Conenct to SocketIO
+let socket = io.connect('http://127.0.0.1:5001/index', {
+  'reconnection': true,
+  'reconnectionDelay': 1000,
+  'reconnectionDelayMax' : 1000,
+  'reconnectionAttempts': 5
+});   
+            //Conenct to SocketIO
 let count = 0;
 let getLTP_loop_started = false;
 let get_interval = 1000; //loop interval in ms for reading ltp
@@ -36,7 +42,7 @@ function getLTP(){
       instLTP = $(lstInst[i]).find(".last-price")[0].innerText;
       ltp_data[instName] = instLTP;
     } 
-    ltp_data['count'] = count;
+    // ltp_data['count'] = count;
     count = count + 1;
     console.log(ltp_data); 
     socket.emit( 'ltp_tick', ltp_data );  

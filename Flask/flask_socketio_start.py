@@ -3,8 +3,10 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 import pandas as pd
 import numpy as np
+import datetime as dt
 
-df_nf5 = pd.DataFrame()
+df_nf5 = pd.DataFrame([],columns=['Date Time', 'Price'])
+tempdf_nf5 = pd.DataFrame([],columns=['Date Time', 'Price'])
 
 # Below if block required for packaging all files into single file using pyinstaller
 if getattr(sys, 'frozen', False):
@@ -81,16 +83,21 @@ def testws(jsonmsg, methods=['GET', 'POST']):
 @socketio.on('start_nifty_strategy', namespace='/index')
 def start_nifty_strategy(jsonmsg, methods=['GET', 'POST']):
     print(jsonmsg['data'])
-    Nifty_Intraday()
+    # Nifty_Intraday()
 
 
 @socketio.on('ltp_tick', namespace='/index')
 def ltp_tick(jsonmsg, methods=['GET', 'POST']):
     ltp = jsonmsg
     global df_nf5
-    df_nf5 = pd.DataFrame(ltp.items())
-    print(type(ltp))
-    print(df_nf5)
+    global tempdf_nf5
+    # df_nf5 = pd.DataFrame(ltp.items())
+    # print(type(ltp))
+    print(ltp['GOLDM SEP FUT'])
+    # current_time = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # tempdf_nf5.loc[0] = pd.DataFrame([current_time, ltp['GOLDM SEP FUT']])
+    # print(tempdf_nf5)
+    # print(df_nf5)
 
 
 
