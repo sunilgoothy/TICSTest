@@ -1,1 +1,1 @@
-E:/DevProjects/DevEnv/jupyter_venv/Scripts/Activate.bat
+cmd /k E:/DevProjects/DevEnv/jupyter_venv/Scripts/Activate.bat
