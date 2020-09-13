@@ -134,3 +134,4 @@ dmypy.json
 .pyre/
 test_loop_log.txt
 .vscode/settings.json
+.vscode/
