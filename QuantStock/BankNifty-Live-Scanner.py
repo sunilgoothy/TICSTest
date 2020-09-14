@@ -24,7 +24,7 @@ conn = sqlite3.connect("data/stocks.db3")
 
 
 scrip = 'BANKNIFTY SEP FUT'
-eval_date = '2020-09-11'
+eval_date = '2020-09-14'
 
 
 # In[10]:
@@ -144,7 +144,7 @@ def Intraday_5min_strategy(df):
 
 
 def start_intraday_monitor(scrip, eval_date):
-    sql_stmt = f"select * from Intraday where scrip = '{scrip}' and timestamp > '{eval_date}'"
+    sql_stmt = f"select * from Intraday where scrip = '{scrip}' and timestamp > '{eval_date} 09:15:00'"
     df = pd.read_sql_query(sql_stmt, conn, parse_dates=['timestamp'])
     
     # Set timestamp as index
