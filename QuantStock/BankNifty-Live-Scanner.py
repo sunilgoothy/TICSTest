@@ -24,7 +24,7 @@ conn = sqlite3.connect("data/stocks.db3")
 
 
 scrip = 'BANKNIFTY SEP FUT'
-eval_date = '2020-09-14'
+eval_date = '2020-09-16'
 
 
 # In[10]:

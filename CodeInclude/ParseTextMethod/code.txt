@@ -1,0 +1,34 @@
+class Test:
+    def __init__(self):
+        self.var = 0
+    def increase(self):
+        self.var += 2
+    def decrease(self):
+        self.var -= 1
+    def set(self, value):
+        self.var = value
+    def raise_error(self):
+        raise Exception("Exception Raised inside class")
+
+def func(x):
+    t = Test()
+    if x < 0:
+        t.raise_error()
+    t.set(x)
+    t.increase()
+    t.increase()
+    t.increase()
+    return t.var
+
+def funcPrint(text):
+    print("Inside funcPrint()")
+    print(text)
+
+def division(a, b):
+    c = a / b;
+    return c;
+
+def multiply(a):
+    print("Global Variable is: ", global_var);
+    c = a * global_var
+    return c;
