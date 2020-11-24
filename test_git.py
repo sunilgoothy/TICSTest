@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     git_status = get_git_status()
     print (git_status)
-    if (git_status is None):
+    if (git_status == ''):
         print(f'Repo is CLEAN')
     else:
         print(f'Repo has uncommited changes!!!')
