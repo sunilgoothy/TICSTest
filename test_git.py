@@ -18,7 +18,7 @@ if __name__ == "__main__":
     print(get_git_short_hash_and_commit_date())
 
     git_status = get_git_status()
-
+    print (git_status)
     if (git_status is None):
         print(f'Repo is CLEAN')
     else:
