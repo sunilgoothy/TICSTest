@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 from openpyxl import load_workbook
 import datetime as dt
-from stock_config import nifty50_stock_list as stock_list
+from stock_config import momentum_stock_list, sample_stock_list
 
 def get_valid_date(start_date, end_date):
     valid = False
@@ -20,8 +20,11 @@ def get_valid_date(start_date, end_date):
             num_tries += 1
     return start_date, end_date
 
-def main_logic(eval_date):
+def main_logic(eval_date, stocklist, filename):
     start_date=eval_date
+    stock_list = stocklist
+    print(f"Total stocks in the list {len(stock_list)}")
+
     end_date = (pd.to_datetime(start_date) + pd.DateOffset(days=1)).strftime('%Y-%m-%d')
     start_date, end_date = get_valid_date(start_date, end_date)
 
@@ -52,10 +55,13 @@ def main_logic(eval_date):
 
     ## Output to File
     ### Create an empty excel file as below filename before running below code
-    filename = f'data/output/momentum_monthly_output.xlsx'
-    book = load_workbook(filename)
-    writer = pd.ExcelWriter(filename, engine = 'openpyxl')
-    writer.book = book
+    try:
+        book = load_workbook(filename)
+        writer = pd.ExcelWriter(filename, engine = 'openpyxl')
+        writer.book = book
+    except FileNotFoundError as fileError:
+        print(f"{fileError}. Create an empty file manually.")
+        return -1
 
     final_df.round(2).to_excel(writer, sheet_name=eval_date)
     writer.save()
@@ -64,8 +70,9 @@ def main_logic(eval_date):
 
 if __name__ == "__main__":
 
-    start_date = "2020-03-20"
-    end_date = "2020-09-18"
+    start_date = "2020-10-02"       #Start date should be always FRIDAY's date
+    end_date = "2020-11-29"
+    filename = r'data/output/momentum_monthly_output_sample.xlsx'
 
     dt_start_date = dt.datetime.strptime(start_date, '%Y-%m-%d')
     dt_end_date = dt.datetime.strptime(end_date, '%Y-%m-%d')
@@ -73,6 +80,10 @@ if __name__ == "__main__":
     eval_date = dt_start_date
     while eval_date <= dt_end_date:
         eval_date = eval_date.strftime('%Y-%m-%d')
+        print("~" * 80)
         print(eval_date)
-        main_logic(eval_date)
+        result = main_logic(eval_date, sample_stock_list, filename)
+        print("~" * 80)
+        if(result == -1):
+            break;
         eval_date = (pd.to_datetime(eval_date) + pd.DateOffset(days=7))
