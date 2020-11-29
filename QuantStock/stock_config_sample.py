@@ -1,3 +1,5 @@
+
+
 momentum_stock_list = ["3MINDIA.NS",
 "ABB.NS",
 "ACC.NS",
