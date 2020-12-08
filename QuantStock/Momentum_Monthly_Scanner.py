@@ -70,9 +70,9 @@ def main_logic(eval_date, stocklist, filename):
 
 if __name__ == "__main__":
 
-    start_date = "2020-10-02"       #Start date should be always FRIDAY's date
-    end_date = "2020-11-29"
-    filename = r'data/output/momentum_monthly_output_sample.xlsx'
+    start_date = "2020-11-06"       #Start date should be always FRIDAY's date
+    end_date = "2020-11-28"
+    filename = r'data/output/momentum_monthly_output_nov2020.xlsx'
 
     dt_start_date = dt.datetime.strptime(start_date, '%Y-%m-%d')
     dt_end_date = dt.datetime.strptime(end_date, '%Y-%m-%d')
@@ -82,7 +82,7 @@ if __name__ == "__main__":
         eval_date = eval_date.strftime('%Y-%m-%d')
         print("~" * 80)
         print(eval_date)
-        result = main_logic(eval_date, sample_stock_list, filename)
+        result = main_logic(eval_date, momentum_stock_list, filename)
         print("~" * 80)
         if(result == -1):
             break;
