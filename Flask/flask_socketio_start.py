@@ -46,7 +46,10 @@ def svg():
 def cpl():
    return render_template('CPL.html')
 
-
+@app.route('/material')
+def material():
+   return render_template('material.html')
+   
 # @socketio.on('connect')
 # def rootconnect(methods=['GET', 'POST']):
 #     print('<INFO> Received CONNECT event from ROOT')
@@ -93,7 +96,7 @@ def ltp_tick(jsonmsg, methods=['GET', 'POST']):
     global tempdf_nf5
     # df_nf5 = pd.DataFrame(ltp.items())
     # print(type(ltp))
-    print(ltp['GOLDM SEP FUT'])
+    print(ltp)
     # current_time = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     # tempdf_nf5.loc[0] = pd.DataFrame([current_time, ltp['GOLDM SEP FUT']])
     # print(tempdf_nf5)

@@ -1,0 +1,1 @@
+cmd /k D:/DevProjects/Venv/testvenv/Scripts/activate.bat

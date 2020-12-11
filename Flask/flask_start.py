@@ -33,7 +33,14 @@ def vue_filter(item):
 def svg():
    return render_template('svg.html')
 
+@app.route('/cpl')
+def cpl():
+   return render_template('CPL.html')
+
+@app.route('/material')
+def material():
+   return render_template('material.html')
 
 if __name__ == '__main__':
-   # app.run(debug = True)
-   app.run()
+   app.run(debug = True)
+   # app.run()

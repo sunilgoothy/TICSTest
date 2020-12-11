@@ -1,1 +1,0 @@
-cmd /k E:/DevProjects/DevEnv/FlaskVenv/Scripts/Activate.bat
