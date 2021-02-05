@@ -1,0 +1,8 @@
+Use below command to generate certificate and key
+
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+
+
+Below command to convert pem file to crt
+
+openssl x509 -outform der -in your-cert.pem -out your-cert.crt
