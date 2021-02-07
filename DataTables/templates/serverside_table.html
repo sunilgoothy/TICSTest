@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+{% block title %}
+
+<title>Server Side Table</title>
+
+{% endblock %}
+{% block body %}
+
+<h3><a href='/'>Home</a></h3>
+
+<div class="table_container">
+  <table id="serverside_table" cellspacing="0">
+    <thead>
+      <tr>
+        <th>EID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Joining Date</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+
+<script>
+  $(document).ready(function () {
+  $('#serverside_table').DataTable({
+    // processing: true,
+    serverSide: true,
+    searchDelay: 1000,
+    pagingType: "full_numbers",
+    lengthMenu: [[10, 25, 50, 100], [10, 25, 50, 100]],
+    sAjaxSource: '/employees_data',
+    columns: [
+      {"data": "eid"},
+      {"data": "Name"},
+      {"data": "Phone"},
+      {"data": "Address"},
+      {"data": "Join_Date"}
+    ]
+  });
+});
+</script>
+{% endblock %}
