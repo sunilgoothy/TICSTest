@@ -1,0 +1,6 @@
+msg_name,tag_name,tag_start_address,tag_end_address,tag_data_type
+HEARTBEAT,tcp_heartbeat,0,4,int
+OUTMSG1,C_b_TCPTag1,0,4,int
+OUTMSG1,C_b_TCPTag2,5,8,int
+INMSG1,C_b_TCPTag3,0,4,int
+INMSG1,C_b_TCPTag4,5,8,int
