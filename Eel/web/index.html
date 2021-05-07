@@ -5,19 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eel GUI</title>
-    <script src=/eel.js type="text/javascript"></script>
+    <script src=/eel.js type="text/javascript"></script> 
+    <!-- eel.js will not be available as a file in filesystem. This file is served when eel is initilaized from python. -->
 </head>
 <body>
     <h1>Eello World</h1>
     <button type="submit" onclick=add()>Add</button>
+    <br>
+    <button type="submit" onclick=txtButton()>Hi</button>
+    <br>
+    <label id=lblText></label>
     <script>
         function add(){
             var sum = eel.add(2,5)(display_alert);          
         };
 
         function display_alert(k){
-            alert(k)
+            alert(k);
         };
+        
+        function txtButton(){
+            eel.chgText();
+        };
+        
+        function changeText(text){
+            x = document.getElementById('lblText');
+            x.innerHTML = text;
+        };
+
+        eel.expose(changeText);
+
     </script>
 </body>
 </html>
