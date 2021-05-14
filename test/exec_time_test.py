@@ -63,6 +63,7 @@ linear_search(mylist, find)
 	# priniting minimum exec. time 
 	print('Linear search time: {}'.format(min(times))) 
 
+
 if __name__ == "__main__": 
 	linear_time() 
-	binary_time() 
+	binary_time()
