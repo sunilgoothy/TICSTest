@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>~</title>
+    <link rel="stylesheet" href="bootstrap-5.0.0-dist/css/bootstrap.min.css" />
+    <script src="/eel.js" type="text/javascript"></script>
+  </head>
+  <body
+    class="bg-dark text-light"
+    style="-webkit-app-region: drag; overflow-y: hidden"
+    onload="loadFunction()"
+  >
+    <div>
+      <div class="container">
+        <div class="row m-1 p-0">
+          <div
+            class="col d-flex align-items-end p-0 m-0"
+            style="font-size: 1em"
+          >
+            CPU
+          </div>
+          <div
+            class="col m-0 p-0 fw-bold text-success px-1"
+            style="font-size: 1.5rem"
+            id="lblCPU"
+          >
+            00.0
+          </div>
+          <div
+            class="col d-flex align-items-end p-0 m-0"
+            ,
+            style="font-size: 1em"
+          >
+            %
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-xs-12 d-flex justify-content-center m-0 p-0"
+            style="font-size: 0.5em"
+          >
+            <p>Right Click to Close</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function loadFunction() {
+        get_cpu();
+        setTimeout(loadFunction, 1000);
+      }
+
+      function get_cpu() {
+        eel.get_cpu_load()(display_cpu);
+      }
+
+      function display_cpu(text) {
+        x = document.getElementById("lblCPU");
+        x.innerHTML = text;
+        if (parseFloat(text) > 50) {
+          x.classList.add("text-danger");
+        } else {
+          x.classList.remove("text-danger");
+        }
+      }
+    </script>
+  </body>
+</html>

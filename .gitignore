@@ -135,3 +135,5 @@ dmypy.json
 test_loop_log.txt
 .vscode/settings.json
 .vscode/
+Eel/cpu/bootstrap-5.0.0-dist/*
+Eel/node_modules
