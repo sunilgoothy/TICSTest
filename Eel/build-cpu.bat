@@ -15,3 +15,4 @@ python -m eel cpu.py cpuweb ^
 
 copy main.js .\dist\main.js
 copy package.json .\dist\package.json
+copy start_cpu_electron_without_console.vbs .\dist\start_cpu_electron_without_console.vbs
