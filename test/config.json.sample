@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "port": "5000",
+    "user": "user",
+    "pwd": "helios",
+    "znewkey": "znewvalue"
+}

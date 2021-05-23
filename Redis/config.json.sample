@@ -1,0 +1,6 @@
+{
+    "host":"redis-nnnnn.xxxx.xx-xxxxx-x-x.ec2.cloud.redislabs.com", 
+    "port":"11111",
+    "user":"Default",
+    "password":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}

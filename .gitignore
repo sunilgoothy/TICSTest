@@ -137,3 +137,5 @@ test_loop_log.txt
 .vscode/
 Eel/cpuweb/bootstrap-5.0.0-dist/*
 Eel/node_modules
+
+config.json
