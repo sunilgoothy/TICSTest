@@ -38,18 +38,16 @@ class TICSEvents:
     def event_10(self):
         print(log_time(), "event_10 executed")
 
-if __name__ == '__main__':
-    evt_class =  TICSEvents()
 
-    for i in range(1,10):
+if __name__ == '__main__':
+    evt_class = TICSEvents()
+
+    for i in range(1, 10):
         event_dict[i] = f"event_{i}"
 
     print(event_dict)
 
     for key in event_dict:  
-        f = getattr(evt_class, event_dict[key])         #get function name from dict using key and get its attribute as method into f.
+        f = getattr(evt_class, event_dict[key])         # get function name from dict using key and get its attribute as method into f.
         print(f())                                      # Execute the method by placing () at the end. If something is returned then it is printed.
-
-
-
-
+        
