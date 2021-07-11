@@ -13,7 +13,7 @@ async def handle_echo(reader, writer):
             # addr = writer.get_extra_info('peername')
 
             # print(f"Received {message!r} from {addr!r}")
-            print(f"Received {message!r}")
+            # print(f"Received {message!r}")
                   
             if 'start' in message:
                 time_start = perf_counter()

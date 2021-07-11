@@ -14,10 +14,10 @@ async def tcp_echo_client(message):
     await writer.drain()
     
     for i in range(1000000):
-        print(i)
+        # print(i)
         writer.write(str(i).encode())
         await writer.drain()
-        await asyncio.sleep(0.0001)
+        # await asyncio.sleep(0.0001)
         
     writer.write("end".encode())
     await writer.drain()  
