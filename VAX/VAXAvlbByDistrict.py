@@ -16,24 +16,28 @@ while True:
     for id in dist_id:
         api_url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={id}&date={today}"
         # print(api_url)
-        res = requests.get(api_url)
+        try:
+            res = requests.get(api_url)
 
-        if res.status_code == 200:
-            results = res.json()
-            for result in results['sessions']:
-                if (result['available_capacity_dose1'] > 0) \
-                    and (result['min_age_limit'] == 18):
-                    print("\n")
-                    print(f"name: {result['name']}")
-                    print(f"Available: {result['available_capacity_dose1']}")
-                    print(f"Vaccine: {result['vaccine']}")
-                    print(f"pincode: {result['pincode']}")
-                    print(f"Age: {result['min_age_limit']}")
-                    print(f"~"*80)
-                    # winsound.Beep(5000, 2000)
-                    winsound.Beep(500, 500)
-        else:
-            print(f"Unexpected Response: {res.status_code}")
+            if res.status_code == 200:
+                results = res.json()
+                for result in results['sessions']:
+                    if (result['available_capacity_dose1'] > 1) \
+                        and (result['min_age_limit'] == 18):
+                        print("\n")
+                        print(f"{dt.datetime.now()}")
+                        print(f"name: {result['name']}")
+                        print(f"Available: {result['available_capacity_dose1']}")
+                        print(f"Vaccine: {result['vaccine']}")
+                        print(f"pincode: {result['pincode']}")
+                        print(f"Age: {result['min_age_limit']}")
+                        print(f"~"*80)
+                        # winsound.Beep(5000, 2000)
+                        winsound.Beep(1000, 1000)
+            else:
+                print(f"Unexpected Response: {res.status_code}")
+        except Exception as e:
+            print(e)
 
     print("* ", end='', flush=True)
     time.sleep(30)

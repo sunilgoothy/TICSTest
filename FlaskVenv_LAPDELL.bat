@@ -1,0 +1,1 @@
+cmd /k "E:/DevProjects/DevEnv/FlaskVenv/Scripts/activate.bat  & E: & CD E:\DevProjects\TICSTest\"
