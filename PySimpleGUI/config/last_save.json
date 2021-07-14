@@ -1,7 +1,7 @@
 {
     "-DB-": "D:/DevProjects/TICSTools/data/test.db",
-    "Browse": "",
-    "-TABLES-": "RMODGS",
-    "-CSVFOLDER-": "D:/DevProjects/TICSTools/data",
-    "Browse0": ""
+    "Browse": "D:/DevProjects/TICSTools/data/test.db",
+    "-TABLE-": "RMODGS",
+    "-CSVFILES-": "D:/DevProjects/TICSTools/data/test.csv",
+    "Browse0": "D:/DevProjects/TICSTools/data/test.csv"
 }
