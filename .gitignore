@@ -132,10 +132,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Custom
 test_loop_log.txt
 .vscode/settings.json
 .vscode/
 Eel/cpuweb/bootstrap-5.0.0-dist/*
 Eel/node_modules
-
+node_modules
+vue-test/node_modules
 config.json
