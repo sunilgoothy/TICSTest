@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TICSMultiDB Test</title>
+</head>
+<body>
+    <h1>TICSMultiDB Test</h1>
+
+    <h3>Roles</h3>
+    <span>
+        {% for role in roles %}
+        <ol>{{ role.c_RoleName }}</ol>
+        {% endfor %}
+    </span>
+
+    <h3>PAC Area</h3>
+    <span>
+        {% for area in pacareas %}
+        <ol>{{ area.c_Description }}</ol>
+        {% endfor %}
+    </span>
+</body>
+</html>
