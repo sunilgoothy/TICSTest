@@ -1,3 +1,6 @@
-This is a test file to test sparse-chekout
+This is a test file to test sparse-checkout
 
 https://stackoverflow.com/a/52269934/12971550
+
+
+This line is a test for git pull when repo is using sparse-checkout
