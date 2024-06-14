@@ -1,0 +1,3 @@
+This is a test file to test sparse-chekout
+
+https://stackoverflow.com/a/52269934/12971550
